@@ -116,12 +116,11 @@ $livre = $dao->find($_REQUEST["ISBNLivre"]);
          <div class="form-group" name="divLivre">
            
             <label class="col-md-5 control-label" for="textinput" >Description du livre:</label>  
-            <span id='desc'>
-                
-            
-                 
+            <span>
+             <?php   echo $livre->getDescription();
+               ?> 
             </span>
-            <button data-toggle="modal" href="#infos" class="btn btn-primary" value="<?php  echo $_REQUEST['ISBNLivre']; ?>" onclick="go(this.value)">Informations</button>
+          
 
             
          </div>
