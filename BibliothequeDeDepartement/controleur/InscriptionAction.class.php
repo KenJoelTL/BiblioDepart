@@ -44,40 +44,11 @@ class InscriptionAction implements Action {
                 $_REQUEST["messages"]["prenom1"] = "Prenom doit etre alphabetique";
                 $resultat = FALSE;
             }
-/*
-            if ($cle != Config::DB_CLE) {
-                $_REQUEST["messages"]["cle"] = "la cle saisi est incorrect";
-                $resultat = FALSE;
-            }*/
-			/*
-			if (!evalueCle($cle)) {
-                $_REQUEST["messages"]["cle"] = "la cle saisi est incorrect";
+			
+			if (!$this->valideCle($cle)) {
+                $_REQUEST["messages"]["cle"] = "la cle saisie est incorrecte";
                 $resultat = FALSE;
             }
-			*/
-			
-			//Ouverture du fichier en lecture seule
-			$handle = fopen('./config/cle.txt', 'r');
-			$ligne = '';
-			//Si on a réussi à ouvrir le fichier
-			if ($handle){
-				/*Tant que l'on est pas à la fin du fichier*/
-				while (!feof($handle)) {
-					/*On lit la ligne courante*/
-					$ligne .= fgets($handle);
-				}
-				/*On ferme le fichier*/
-				fclose($handle);
-
-				if($cle != $ligne){
-					$_REQUEST["messages"]["cle"] = "la cle saisi est incorrect";
-					$resultat = false;
-				}
-			}
-			else{ 
-				$resultat = false;
-			}	
-			
 			
             if ($p1 == "") {
                 $_REQUEST["messages"]["p1"] = "Mot de passe obligatoire";
@@ -133,6 +104,29 @@ class InscriptionAction implements Action {
        
     }
 	
+	private function valideCle($cle){
+
+		//Ouverture du fichier en lecture seule
+		$handle = fopen('./config/cle.txt', 'r');
+		$ligne = "";
+		//Si on a réussi à ouvrir le fichier
+		if ($handle)
+		{
+			/*Tant que l'on est pas à la fin du fichier*/
+			while (!feof($handle))
+			{
+				/*On lit la ligne courante*/
+				$ligne .= fgets($handle);
+
+			}
+			/*On ferme le fichier*/
+			fclose($handle);
+			
+			return $cle == $ligne;
+		}
+	
+		return false;
+	}
 	
 
 }
