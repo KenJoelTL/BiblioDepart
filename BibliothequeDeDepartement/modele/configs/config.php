@@ -6,6 +6,5 @@
 		const DB_USER = "root";
 		const DB_PWD = "root";
 		const DB_NAME = "bibliodepart";
-                const DB_CLE = "1234";
 	}
 ?>	
