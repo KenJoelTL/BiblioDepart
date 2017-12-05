@@ -68,14 +68,14 @@
                                 ?> 
                                
                                 <td><?php echo $Detenteur ?></td>
-								<?php 
+								<?php //seuls les membres autorisés peuvent voir le lien de suppression
 								if( ($_SESSION['typeUser'] == $e->getProprietaire()) or ($_SESSION["connect"] == $e->getEmail_Proprietaire()) ){ 
 								?>
                                 <td><a href="?action=supprimer&codeExpSup=<?php echo $e->getCode_exp() ?>&detenteur=<?php echo $e->getEmail_det() ?>&proprietaire=<?php echo $e->getProprietaire() ?>&emailproprietaire=<?php echo $e->getEmail_Proprietaire() ?>">Supprimer</a></td>    
-		<?php					
-        } else {
-            $email_Dest = $e->getEmail_det();
-            ?>
+						<?php	}				
+							} else {
+								$email_Dest = $e->getEmail_det();
+								?>
                                 <?php
                                 if ($e->getEmail_det() == NULL) {
                                     //il faut cacher les parametres          
@@ -89,7 +89,7 @@
                                     <?php
                                 }
                                 ?> 
-								<?php 
+								<?php //seuls les membres autorisés peuvent voir le lien de suppression								
 								if( ($_SESSION['typeUser'] == $e->getProprietaire()) or ($_SESSION["connect"] == $e->getEmail_Proprietaire()) ){ 
 								?>
                                 <td><a href="?action=supprimer&codeExpSup=<?php echo $e->getCode_exp() ?>&detenteur=<?php echo $e->getEmail_det() ?>&proprietaire=<?php echo $e->getProprietaire() ?>&emailproprietaire=<?php echo $e->getEmail_Proprietaire() ?>">Supprimer</a></td>    
