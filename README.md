@@ -1,2 +1,2 @@
-# BiblioDepart-
-TP-2 : Amélioration d'une application existante.
+# BiblioDepart
+Amélioration d'une application existante.
